@@ -1,21 +1,32 @@
+/*
+    Name: Md Faizal Karim
+    Scholar Id: 2012027
+    Mini Project - 1
+    CS - 201, Data Structures
+    Department of Computer Science and Engineering, 
+    National Institute of Technology, Silchar
+*/
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "time.h"
 
 // utility functions
 int get_ones_digit(int num);
 int get_tens_digit(int num);
 void copy_array(int *arr, int *brr, int n);
 void print_array(int *arr, int n);
-void run_fib(int itr, int n);
+void run_fib(int term, int N);
 
 //main function
 int main(){
 
     // nth_term: the term to find
-    // size: prefefined size of array used for computation
+    // size: predefined size of array used for computation
 
     int nth_term, size = 5000;
+    // input the term to find
     scanf("%d", &nth_term);
 
     if(nth_term > 0)
@@ -48,7 +59,7 @@ void print_array(int *arr, int n){
     // to print an array
     int zeroStream = 1, counter = 0;
     for(int i =0; i<n; i++) {
-        if(arr[i] == 0 && zeroStream)       // to not print the starting zeros of array
+        if(arr[i] == 0 && zeroStream)                  // to not print the starting zeros of array
             continue;
         else
             zeroStream = 0;
@@ -59,7 +70,7 @@ void print_array(int *arr, int n){
     printf("\nLength: %d\n", counter);
 }
 
-void run_fib(int itr, int N){
+void run_fib(int term, int N){
     int a[N], b[N], c[N];
     // initialize utility arrays with zero
     for(int i =0; i<N; i++){
@@ -69,32 +80,29 @@ void run_fib(int itr, int N){
     }
     b[N-1] = 1;
 
-    int carry;
+    int carry;                                         // carry term used for addition
 
-    for(int i =1; i<itr; i++){
+    for(int i =1; i<term; i++){
         carry = 0;
 
         for(int j = N-1; j>=0; j--){
-            int add_term = a[j] + b[j] + carry;        //the term to add
-            int ones = get_ones_digit(add_term);      // get the one's digit and add it to current index
+            int add_term = a[j] + b[j] + carry;        // the term to add (can be a one/two digit number)
+            int ones = get_ones_digit(add_term);       // get the one's digit and add it to current index
             c[j] = ones;
-            carry = get_tens_digit(add_term);         // if there is a ten's digit then store it in carry and add it
-                                                     // next iteration
+
+            carry = get_tens_digit(add_term);          // if there is a ten's digit then store it in carry and add it next iteration                                   
+
         }
 
         // update the arrays for next iteration
         copy_array(a, b, N);
-        copy_array(b,c, N);
+        copy_array(b, c, N);
     }
 
     // print the final answer
     print_array(c, N);
 
 }
-
-
-
-
 
 
 
