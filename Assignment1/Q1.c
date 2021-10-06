@@ -5,7 +5,9 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-int check1(char *arr){
+
+int check2(char *arr){
+    // to check if there is one point or not
     int counter = 0;
     while(*arr != '\0'){
         if(*arr == '.')
@@ -17,6 +19,7 @@ int check1(char *arr){
 }
 
 int check3(char *arr){
+    // to check if there is even a single number on both sides of point
     int point_index = 0, i =0;
     char* tarr = arr;
 
@@ -32,7 +35,8 @@ int check3(char *arr){
         return 1;
 }
 
-int check2(char *arr){
+int check1(char *arr){
+    // to check if there is any character other than number
     while(*arr != '\0'){
         if(*arr != '.' && (*arr < 48 || *arr > 57))
             return 0;
@@ -41,23 +45,14 @@ int check2(char *arr){
     return 1;
 }
 
-int length(char *arr){
-    int counter = 0;
-    while(*arr != '\0'){
-        arr++;
-        counter++;
-    }
-
-    return counter;
-}
-
 int main(){
 
+    // take the floating point as input
     char input[50];
     scanf("%s", input);
 
 
-    if(check2(input) == 1 && check1(input) == 1 && check3(input) == 1)
+    if(check1(input) == 1 && check2(input) == 1 && check3(input) == 1)
         printf("Valid\n");
     else
         printf("Not Valid\n");
