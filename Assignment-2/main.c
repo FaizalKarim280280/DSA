@@ -1,46 +1,79 @@
-
 #include "stdio.h"
 #include "stdlib.h"
 
-void int2binary(int num);
-void int2roman(int num);
-void binary2int(char* str);
-void roman2int(char* str);
-int getLength(char *str);
+void decimal2roman(int num);
 
-int main(){
+int main() {
+
+    int num;
+
+    // take input
+    scanf("%d", &num);
+
+    decimal2roman(num);
 
 
-
+    return 0;
 }
 
-int getLength(char *str){
-    int counter =0;
-    while(*str != '\0'){
-        counter++;
-        str++;
+void decimal2roman(int num){
+
+    while (num != 0) {
+
+        if (num >= 1000) {
+            printf("M");
+            num -= 1000;
+
+        } else if (num >= 900) {
+            printf("CM");
+            num -= 900;
+
+        } else if (num >= 500) {
+            printf("D");
+            num -= 500;
+
+        } else if (num >= 400) {
+            printf("CD");
+            num -= 400;
+
+        } else if (num >= 100) {
+            printf("C");
+            num -= 100;
+
+        } else if (num >= 90) {
+            printf("XC");
+            num -= 90;
+
+        } else if (num >= 50) {
+            printf("L");
+            num -= 50;
+
+        } else if (num >= 40) {
+            printf("XL");
+            num -= 40;
+
+        } else if (num >= 10) {
+            printf("X");
+            num -= 10;
+
+        } else if (num >= 9) {
+            printf("IX");
+            num -= 9;
+
+        } else if (num >= 5) {
+            printf("V");
+            num -= 5;
+
+        } else if (num >= 4) {
+            printf("IV");
+            num -= 4;
+
+        } else if (num >= 1) {
+            printf("I");
+            num -= 1;
+
+        }
     }
-    return counter;
+
 }
-
-void int2binary(int num){
-    if(num == 0)
-        return;
-    int2binary(num>>1);
-    printf("%d", num%2);
-}
-
-void binary2int(char *str){
-    int len = getLength(str);
-    int ff = 1, sum = 0;
-
-    for(int i = len-1; i>=0; i--){
-        if(str[i] == '1')
-            sum += ff;
-        ff *= 2;
-    }
-    printf("%d\n", sum);
-}
-
-
 
