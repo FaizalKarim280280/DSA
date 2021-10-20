@@ -1,6 +1,11 @@
-//
-// Created by faizal on 20-10-2021.
-//
+/*
+    Name: Md Faizal Karim
+    Scholar Id: 2012027
+    Assignment-1, Q4
+    CS - 201, Data Structures
+    Department of Computer Science and Engineering,
+    National Institute of Technology, Silchar
+*/
 
 #include "stdlib.h"
 #include "stdio.h"
