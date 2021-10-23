@@ -82,7 +82,5 @@ void cloneArray(int a[],int n,int b[]){
 int main(){
 
     int a[MAX] = {0};
-    //
-
     return 0;
 }
